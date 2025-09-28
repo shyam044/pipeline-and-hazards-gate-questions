@@ -1,0 +1,44 @@
+body {
+  background: linear-gradient(to right, #e0f7fa, #ffffff);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.main-heading {
+  font-size: 48px;
+  font-weight: bold;
+  text-decoration: underline;
+}
+.question-title {
+  font-size: 24px;
+  color: #8B0000;
+  font-weight: 500;
+}
+.question-box {
+  background-color: #ffe6e6;
+  border-left: 6px solid #ff4d4d;
+}
+.feedback {
+  font-size: 28px;
+  font-weight: bold;
+}
+.explanation {
+  font-size: 20px;
+  line-height: 1.5;
+}
+.btn-info:hover {
+  background-color: #17a2b8;
+  color: white;
+  font-weight: bold;
+}
+button#timeDisplay {
+  font-size: 18px;
+}
+.d-none {
+  display: none;
+}
+/* Styles for shading correct / wrong */
+.option-correct {
+  background-color: #d4edda !important;  /* light green */
+}
+.option-wrong {
+  background-color: #f8d7da !important;   /* light red */
+}

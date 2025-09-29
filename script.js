@@ -10,31 +10,29 @@ const explainBtn = document.getElementById("explainBtn");
 const questions = [
   {
     id: 1,
-    title: "Question‑01: ~ GATE 2024 Set‑01 [MSQ]",
-    questionText: "Consider a Boolean expression given by F(X, Y, Z) = Σ(3,5,6,7). Which of the following statements is/are CORRECT?",
+    title: "Question‑01: ~ GATE 2024 Set-02 [MSQ]",
+    questionText: `An instruction format has the following structure:<br>
+    <strong>Instruction Number: Opcode destination reg, source reg-1, source reg-2</strong><br><br>
+    Consider the following sequence of instructions to be executed in a pipelined processor:<br>
+    I1: DIV R3, R1, R2<br>
+    I2: SUB R5, R3, R4<br>
+    I3: ADD R3, R5, R6<br>
+    I4: MUL R7, R3, R8<br><br>
+    Which of the following statements is/are TRUE?`,
     options: [
-      { id: "opt1", text: "(A) F(X,Y,Z) = Π(0,1,2,4)" },
-      { id: "opt2", text: "(B) F(X,Y,Z) = XY + YZ + XZ" },
-      { id: "opt3", text: "(C) F(X,Y,Z) is independent of input Y" },
-      { id: "opt4", text: "(D) F(X,Y,Z) is independent of input X" }
+      { id: "opt1", text: "(A) There is a RAW dependency on R3 between I1 and I2" },
+      { id: "opt2", text: "(B) There is a WAR dependency on R3 between I1 and I3" },
+      { id: "opt3", text: "(C) There is a RAW dependency on R3 between I2 and I3" },
+      { id: "opt4", text: "(D) There is a WAW dependency on R3 between I3 and I4" }
     ],
-    correct: ["opt1", "opt2"],
-    explanation: "Option A is correct because the zero‑minterms are 0,1,2,4 → F = Π(0,1,2,4).<br>Option B is correct because simplifying Σ(3,5,6,7) yields XY + YZ + XZ."
-  },
-  {
-    id: 2,
-    title: "Question‑02: ~ GATE 2024 Set‑02 [MSQ]",
-    questionText: "For a Boolean variable x, which of the following statements is/are FALSE?",
-    options: [
-      { id: "opt1", text: "(A) x·1 = x" },
-      { id: "opt2", text: "(B) x + 1 = x" },
-      { id: "opt3", text: "(C) x·x = 0" },
-      { id: "opt4", text: "(D) x + x̅ = 1" }
-    ],
-    correct: ["opt2", "opt3"],
-    explanation: "In Boolean algebra:<br>(B) is FALSE because x + 1 = 1 always, so cannot equal x.<br>(C) is FALSE because x·x = x, not 0."
+    correct: ["opt1"],
+    explanation: `✅ Option (A) is correct because there is a <strong>Read After Write (RAW)</strong> dependency on register <code>R3</code> between instructions I1 and I2. I1 writes to R3, and I2 reads from R3, so I2 must wait for I1 to finish.<br><br>
+❌ Option (B) is incorrect because I3 is writing to R3, not reading it before I1 writes — this would be a WAR (Write After Read), but that’s not happening here.<br><br>
+❌ Option (C) is incorrect because I2 writes to R5, and I3 reads R5 — so the RAW is on R5, not R3.<br><br>
+❌ Option (D) is incorrect because although both I3 and I4 reference R3, only I3 writes to it — I4 reads R3. So, no Write After Write (WAW) dependency exists.`
   }
 ];
+
 
 let currentIndex = 0;
 let questionTimer = null;
